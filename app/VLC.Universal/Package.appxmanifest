@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3" xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities" IgnorableNamespaces="uap mp uap3 rescap">
-  <Identity Name="VideoLAN.VLC" Publisher="CN=716F2E5E-A03A-486B-BC67-9B18474B9D51" Version="3.1.0.0" />
+  <Identity Name="VideoLAN.VLC.Experimental" Publisher="CN=716F2E5E-A03A-486B-BC67-9B18474B9D51" Version="3.1.0.0" />
   <mp:PhoneIdentity PhoneProductId="959b7d4f-83ae-4aa5-86a4-c9cb58572541" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>VLC</DisplayName>
+    <DisplayName>VLC Experimental</DisplayName>
     <PublisherDisplayName>VideoLAN</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -15,8 +15,8 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="VLC.App">
-      <uap:VisualElements DisplayName="VLC" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="VLC.Universal" BackgroundColor="transparent">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" ShortName="VLC" Square310x310Logo="Assets\Square310x310Logo.png" Square71x71Logo="Assets\Square71x71Logo.png">
+      <uap:VisualElements DisplayName="VLC Experimental" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="VLC Universal" BackgroundColor="transparent">
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" ShortName="VLC Experimental" Square310x310Logo="Assets\Square310x310Logo.png" Square71x71Logo="Assets\Square71x71Logo.png">
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square150x150Logo" />
             <uap:ShowOn Tile="wide310x150Logo" />
@@ -28,12 +28,12 @@
       <Extensions>
         <uap:Extension Category="windows.protocol">
           <uap:Protocol Name="vlc" DesiredView="useMore">
-            <uap:DisplayName>VLC</uap:DisplayName>
+            <uap:DisplayName>VLC Experimental</uap:DisplayName>
           </uap:Protocol>
         </uap:Extension>
         <uap:Extension Category="windows.fileTypeAssociation">
           <uap:FileTypeAssociation Name="vlc">
-            <uap:DisplayName>VLC</uap:DisplayName>
+            <uap:DisplayName>VLC Experimental</uap:DisplayName>
             <uap:SupportedFileTypes>
               <uap:FileType>.3g2</uap:FileType>
               <uap:FileType>.3gp</uap:FileType>
