@@ -152,7 +152,7 @@ namespace VLC.UI.Views.SettingsPages
 
         private void OnClearKeystoreClicked(object sender, RoutedEventArgs a)
         {
-            Locator.SettingsVM.ClearKeystore();
+            Locator.SettingsVM.ClearKeyStore();
         }
     }
 }

@@ -9,9 +9,9 @@ namespace VLC.Converters
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            if (value is VLCPage)
+            if (value is VLCPage page)
             {
-                switch ((VLCPage)value)
+                switch (page)
                 {
                     case VLCPage.MainPageMusic:
                         return Strings.Music;
@@ -19,6 +19,8 @@ namespace VLC.Converters
                         return Strings.Videos;
                     case VLCPage.MainPageFileExplorer:
                         return Strings.FileExplorer;
+                    case VLCPage.MainPageNetwork:
+                        return Strings.Network;
                     default:
                         throw new NotImplementedException();
                 }

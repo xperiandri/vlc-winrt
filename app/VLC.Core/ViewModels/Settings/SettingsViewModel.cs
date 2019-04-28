@@ -22,6 +22,7 @@ using VLC.Commands.Navigation;
 using VLC.Commands.Settings;
 using VLC.Utils;
 using Windows.UI.Xaml.Navigation;
+using System.Collections.Immutable;
 
 namespace VLC.ViewModels.Settings
 {
@@ -311,34 +312,32 @@ namespace VLC.ViewModels.Settings
             }
         }
 
-        public List<VLCPage> HomePageCollection { get; set; } = new List<VLCPage>()
-        {
-            VLCPage.MainPageVideo,
-            VLCPage.MainPageMusic,
-            VLCPage.MainPageFileExplorer
-        };
+        private readonly ImmutableArray<VLCPage> homePageCollection =
+            ImmutableArray.Create(
+                VLCPage.MainPageVideo,
+                VLCPage.MainPageMusic,
+                VLCPage.MainPageFileExplorer,
+                VLCPage.MainPageNetwork);
+        public IReadOnlyList<VLCPage> HomePageCollection => homePageCollection;
 
-        public List<ExternalDeviceMode> ExternalDeviceModeCollection { get; set; }
-            = Enum.GetValues(typeof(ExternalDeviceMode)).Cast<ExternalDeviceMode>().ToList();
+        private readonly ImmutableArray<ExternalDeviceMode> externalDeviceModeCollection = Enum.GetValues(typeof(ExternalDeviceMode)).Cast<ExternalDeviceMode>().ToImmutableArray();
+        public IReadOnlyList<ExternalDeviceMode> ExternalDeviceModeCollection => externalDeviceModeCollection;
 
-        public List<Languages> LanguageCollection { get; } = Enum.GetValues(typeof(Languages)).Cast<Languages>().ToList();
+        private readonly ImmutableArray<Languages> languageCollection = Enum.GetValues(typeof(Languages)).Cast<Languages>().ToImmutableArray();
+        public IReadOnlyList<Languages> LanguageCollection => languageCollection;
 
-        public List<OrderType> AlbumsOrderTypeCollection
-        { get; set; }
-        = new List<OrderType>()
-        {
-            OrderType.ByArtist,
-            OrderType.ByDate,
-            OrderType.ByAlbum,
-        };
+        private ImmutableArray<OrderType> albumsOrderTypeCollection =
+            ImmutableArray.Create(
+                OrderType.ByArtist,
+                OrderType.ByDate,
+                OrderType.ByAlbum);
+        public IReadOnlyList<OrderType> AlbumsOrderTypeCollection => albumsOrderTypeCollection;
 
-        public List<OrderListing> AlbumsListingTypeCollection
-        { get; set; }
-        = new List<OrderListing>()
-        {
-            OrderListing.Ascending,
-            OrderListing.Descending
-        };
+        private ImmutableArray<OrderListing> albumsListingTypeCollection =
+            ImmutableArray.Create(
+                OrderListing.Ascending,
+                OrderListing.Descending);
+        public IReadOnlyList<OrderListing> AlbumsListingTypeCollection => albumsListingTypeCollection;
 
         public List<StorageFolder> MusicFolders
         {
@@ -711,7 +710,7 @@ namespace VLC.ViewModels.Settings
         /// <summary>
         /// TODO: This needs to be moved to a service.
         /// </summary>
-        public void ClearKeystore()
+        public void ClearKeyStore()
         {
             Task.Run(async () =>
             {
