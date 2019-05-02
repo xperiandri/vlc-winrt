@@ -17,12 +17,16 @@ namespace VLC.Converters
                         return Strings.SURFACE_BEST_FIT.ToUpperFirstChar();
                     case VLCSurfaceZoom.SURFACE_FIT_SCREEN:
                         return Strings.SURFACE_FIT_SCREEN.ToUpperFirstChar();
+                    case VLCSurfaceZoom.SURFACE_SCALE_FIT_SCREEN:
+                        return Strings.SURFACE_SCALE_FIT_SCREEN.ToUpperFirstChar();
                     case VLCSurfaceZoom.SURFACE_FILL:
                         return Strings.SURFACE_FILL.ToUpperFirstChar();
                     case VLCSurfaceZoom.SURFACE_16_9:
                         return Strings.SURFACE_16_9.ToUpperFirstChar();
                     case VLCSurfaceZoom.SURFACE_4_3:
                         return Strings.SURFACE_4_3.ToUpperFirstChar();
+                    case VLCSurfaceZoom.SURFACE_3_2:
+                        return Strings.SURFACE_3_2.ToUpperFirstChar();
                     case VLCSurfaceZoom.SURFACE_ORIGINAL:
                         return Strings.SURFACE_ORIGINAL.ToUpperFirstChar();
                     case VLCSurfaceZoom.SURFACE_2_35_1:

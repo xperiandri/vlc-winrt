@@ -627,14 +627,20 @@
   <data name="SURFACE_FILL" xml:space="preserve">
     <value>fill</value>
   </data>
+  <data name="SURFACE_SCALE_FIT_SCREEN" xml:space="preserve">
+    <value>scale and fill</value>
+  </data>
   <data name="SURFACE_16_9" xml:space="preserve">
     <value>16:9</value>
   </data>
   <data name="SURFACE_4_3" xml:space="preserve">
     <value>4:3</value>
   </data>
+  <data name="SURFACE_3_2" xml:space="preserve">
+    <value>3:2</value>
+  </data>
   <data name="SURFACE_2_35_1" xml:space="preserve">
-    <value>2.35:1</value>
+    <value>2.35:1 (21:9)</value>
   </data>
   <data name="SURFACE_ORIGINAL" xml:space="preserve">
     <value>original</value>

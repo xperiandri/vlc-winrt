@@ -278,7 +278,23 @@ namespace VLC.ViewModels.VideoVM
 
             if (videoTrack == null)
                 return;
-            
+
+            float GetScale(Comparison<float> condition)
+            {
+                uint videoW, videoH;
+                videoW = videoTrack.width();
+                videoH = videoTrack.height();
+                if (videoTrack.sarNum() != videoTrack.sarDen())
+                    videoW = videoW * videoTrack.sarNum() / videoTrack.sarDen();
+                float ar = videoW / (float)videoH;
+                float dar = (float) (screenWidth / screenHeight);
+                if (condition(dar, ar) >= 0)
+                    return (float)screenWidth / videoW; /* horizontal */
+                else
+                    return (float)screenHeight / videoH; /* vertical */
+
+            }
+
             switch (desiredZoom)
             {
                 case VLCSurfaceZoom.SURFACE_BEST_FIT:
@@ -286,21 +302,14 @@ namespace VLC.ViewModels.VideoVM
                     playbackService.VideoScale = 0;
                     break;
                 case VLCSurfaceZoom.SURFACE_FIT_SCREEN:
-                    var videoW = videoTrack.width();
-                    var videoH = videoTrack.height();
-                    
-                    if (videoTrack.sarNum() != videoTrack.sarDen())
-                        videoW = videoW * videoTrack.sarNum() / videoTrack.sarDen();
-
-                    var ar = videoW / (float)videoH;
-                    var dar = screenWidth / screenHeight;
-
-                    float scale;
-                    if (dar >= ar)
-                        scale = (float)screenWidth / videoW; /* horizontal */
-                    else
-                        scale = (float)screenHeight / videoH; /* vertical */
-
+                    int FitPredicate(float dar, float ar) => Math.Sign(dar - ar);
+                    float scale = GetScale(FitPredicate);
+                    playbackService.VideoScale = scale;
+                    playbackService.VideoAspectRatio = string.Empty;
+                    break;
+                case VLCSurfaceZoom.SURFACE_SCALE_FIT_SCREEN:
+                    int ScaleAndFitPredicate(float dar, float ar) => Math.Sign(ar - dar);
+                    scale = GetScale(ScaleAndFitPredicate);
                     playbackService.VideoScale = scale;
                     playbackService.VideoAspectRatio = string.Empty;
                     break;
@@ -314,6 +323,10 @@ namespace VLC.ViewModels.VideoVM
                     break;
                 case VLCSurfaceZoom.SURFACE_4_3:
                     playbackService.VideoAspectRatio = "4:3";
+                    playbackService.VideoScale = 0;
+                    break;
+                case VLCSurfaceZoom.SURFACE_3_2:
+                    playbackService.VideoAspectRatio = "3:2";
                     playbackService.VideoScale = 0;
                     break;
                 case VLCSurfaceZoom.SURFACE_ORIGINAL:
